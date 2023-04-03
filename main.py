@@ -56,9 +56,9 @@ class operation_file:
 
     @ensure_annotations
     def upload_bd(self, data: pd.DataFrame) -> str:
-        data.to_excel(self.file_name, index=False)
+        data.to_excel("temporal_files/" + self.file_name, index=False)
         blob = self.bucket.blob(self.folder_upload + self.file_name)
-        blob.upload_from_filename(self.file_name)
+        blob.upload_from_filename("temporal_files/" + self.file_name)
         return "ok"
 
     @ensure_annotations
@@ -68,10 +68,8 @@ class operation_file:
 
 
 if __name__ == '__main__':
-
     # class definition
     file_functions = operation_file()
-
     # get names from secret admin names
     file_functions.read_admin_secret()
     # connection to bd firebase
