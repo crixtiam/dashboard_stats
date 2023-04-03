@@ -80,7 +80,6 @@ if __name__ == '__main__':
     file_functions.download_bd()
     # read file
     df = file_functions.read_file()
-
     # subtract timestamp attendance operation
     status_arrive = df.Timestamp - df.Hora_apertura_formulario
     #add status arrive to dataframe
